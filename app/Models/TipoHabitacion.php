@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoHabitacion extends Model
 {
-    //
+    protected $primaryKey = 'id_tipo';
+    protected $fillable = ['nombre_tipo', 'descripcion'];
+
+    public function habitaciones(){
+        return $this->hasMany(Habitacion::class, 'id_tipo');
+    }
 }
