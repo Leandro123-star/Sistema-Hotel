@@ -9,19 +9,22 @@
        + Nuevo cliente
     </a>
 
-    <div class="mt-6">
-        <input type="text" placeholder="Buscar por nombre, CI o correo..." 
-               class="w-full px-3 py-2 rounded bg-gray-800 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400">
-    </div>
+   <form action="{{ route('clientes.index') }}" method="GET" class="mt-6">
+    <input type="text" name="search" placeholder="Buscar por nombre o CI..." 
+           value="{{ request('search') }}"
+           class="w-full px-3 py-2 rounded bg-gray-800 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+</form>
+
 
     <table class="w-full mt-6 border-collapse">
         <thead>
             <tr class="bg-gray-700 text-yellow-400">
                 <th class="px-4 py-2 text-left">ID</th>
                 <th class="px-4 py-2 text-left">NOMBRE</th>
+                <th class="px-4 py-2 text-left">APELLIDO</th>
                 <th class="px-4 py-2 text-left">CI</th>
                 <th class="px-4 py-2 text-left">TELÉFONO</th>
-                <th class="px-4 py-2 text-left">CORREO</th>
+                <th class="px-4 py-2 text-left">EMAIL</th>
                 <th class="px-4 py-2 text-left">ACCIONES</th>
             </tr>
         </thead>
@@ -29,10 +32,11 @@
             @foreach($clientes as $cliente)
             <tr class="border-b border-gray-700 hover:bg-gray-800">
                 <td class="px-4 py-2">{{ $cliente->id_cliente }}</td>
-                <td class="px-4 py-2">{{ $cliente->nombre }} {{ $cliente->apellido }}</td>
+                <td class="px-4 py-2">{{ $cliente->nombre }}</td>
+                <td class="px-4 py-2">{{ $cliente->apellido }}</td>
                 <td class="px-4 py-2">{{ $cliente->ci }}</td>
                 <td class="px-4 py-2">{{ $cliente->telefono }}</td>
-                <td class="px-4 py-2">{{ $cliente->correo }}</td>
+                <td class="px-4 py-2">{{ $cliente->email }}</td>
                 <td class="px-4 py-2 space-x-2">
                     <a href="{{ route('clientes.edit', $cliente->id_cliente) }}" 
                        class="bg-blue-500 px-3 py-1 rounded text-white hover:bg-blue-400">Editar</a>

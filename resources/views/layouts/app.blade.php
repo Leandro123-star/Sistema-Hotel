@@ -15,11 +15,11 @@
             <nav class="space-y-2">
                 <a href="{{ route('panel') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Panel</a>
                 <a href="{{ route('clientes.index') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Clientes</a>
-               {{-- <a href="{{ route('habitaciones.index') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Habitaciones</a>
+                <a href="{{ route('habitaciones.index') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Habitaciones</a>
                 <a href="{{ route('tipos.index') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Tipos</a>
                 <a href="{{ route('reservas.index') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Reservas</a>
                 <a href="{{ route('pagos.index') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Pagos</a>
-                <a href="{{ route('empleados.index') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Empleados</a>--}}
+                <a href="{{ route('empleados.index') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Empleados</a>
             </nav>
         </aside>
 

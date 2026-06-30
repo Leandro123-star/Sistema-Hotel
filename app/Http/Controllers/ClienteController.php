@@ -71,4 +71,6 @@ class ClienteController extends Controller
         return redirect()->route('clientes.index')
                          ->with('success','Cliente eliminado correctamente');
     }
+
+    
 }
