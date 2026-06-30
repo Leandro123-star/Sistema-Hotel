@@ -1,0 +1,52 @@
+@extends('layouts.app')
+
+@section('content')
+    <h1 class="text-yellow-400 text-3xl font-bold mb-4">Clientes</h1>
+    <p class="mb-4">{{ count($clientes) }} huéspedes registrados</p>
+
+    <a href="{{ route('clientes.create') }}" 
+       class="bg-yellow-400 text-gray-900 px-4 py-2 rounded font-semibold hover:bg-yellow-300">
+       + Nuevo cliente
+    </a>
+
+    <div class="mt-6">
+        <input type="text" placeholder="Buscar por nombre, CI o correo..." 
+               class="w-full px-3 py-2 rounded bg-gray-800 text-gray-100 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+    </div>
+
+    <table class="w-full mt-6 border-collapse">
+        <thead>
+            <tr class="bg-gray-700 text-yellow-400">
+                <th class="px-4 py-2 text-left">ID</th>
+                <th class="px-4 py-2 text-left">NOMBRE</th>
+                <th class="px-4 py-2 text-left">CI</th>
+                <th class="px-4 py-2 text-left">TELÉFONO</th>
+                <th class="px-4 py-2 text-left">CORREO</th>
+                <th class="px-4 py-2 text-left">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($clientes as $cliente)
+            <tr class="border-b border-gray-700 hover:bg-gray-800">
+                <td class="px-4 py-2">{{ $cliente->id_cliente }}</td>
+                <td class="px-4 py-2">{{ $cliente->nombre }} {{ $cliente->apellido }}</td>
+                <td class="px-4 py-2">{{ $cliente->ci }}</td>
+                <td class="px-4 py-2">{{ $cliente->telefono }}</td>
+                <td class="px-4 py-2">{{ $cliente->correo }}</td>
+                <td class="px-4 py-2 space-x-2">
+                    <a href="{{ route('clientes.edit', $cliente->id_cliente) }}" 
+                       class="bg-blue-500 px-3 py-1 rounded text-white hover:bg-blue-400">Editar</a>
+                    <form action="{{ route('clientes.destroy', $cliente->id_cliente) }}" method="POST" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" 
+                                class="bg-red-500 px-3 py-1 rounded text-white hover:bg-red-400">
+                            Eliminar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection
